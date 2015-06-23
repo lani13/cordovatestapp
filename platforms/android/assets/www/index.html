@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <!--  <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+        <title>Hello World</title>
+    </head>
+    <body>
+        <!--  <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script id="sap-ui-bootstrap"  
+      		type="text/javascript"  
+      		src="resources/sap-ui-core.js"  
+      		data-sap-ui-theme="sap_bluecrystal"  
+      		data-sap-ui-libs="sap.m"
+      		data-sap-ui-resourceroots='{"sap.m.views": "./views"}'
+      		data-sap-ui-preload=""
+      		>  
+		</script>
+		
+		<script>
+		var appUI = new sap.m.App({});
+		
+		jQuery.sap.declare("sap.m.views.TableController");		
+
+		sap.ui.controller("sap.m.views.TableController", {
+				onInit:function(){
+					
+					
+					var model=new sap.ui.model.json.JSONModel();
+					
+					var urlData =  'http://acuarius.ontc.pl:3000/api/get?method=redis/fill_table&set=BP008/ddd/sss/DoxSets/byDoxType/doxtype_PARTNER&uid=';
+
+					$.ajax({
+						url: urlData,
+						dataType: 'json',
+						async: true,
+						}).done(function(response){
+							model.setData(response);
+							sap.ui.getCore().setModel(model);	
+						}).fail(function(x,y){
+							//model.setData(jsonData);
+							//sap.ui.getCore().setModel(model);
+						});
+					}
+         });
+            
+	appUI.addPage(sap.ui.view({
+         		 type: sap.ui.core.mvc.ViewType.XML,
+          	 viewName: "sap.m.views.TableViewCordova"
+    }));	
+          		
+	appUI.placeAt("tableUI");
+		
+	//var jsonData = {"data":[{ "c1":"test", "c2":"test", "c3":"test", "c4":"test", "c5":"test"}]};
+	
+   /*sap.ui.jsview("sap.m.sample.TableSample.NewView", {
+
+     getControllerName : function() {
+
+      return "sap.m.sample.TableSample.NewController";
+
+    },
+
+    createContent : function(oController) {
+
+      			var oTable = new sap.m.Table(	
+				tableJsonOptions.tableOptions						 
+				);
+
+			var colItems = new sap.m.ColumnListItem(tableJsonOptions.listItemOptions);
+			oTable.bindAggregation("items","/data",colItems)
+
+			tableJsonOptions.columns.forEach(function(col){
+
+			   oTable.addColumn(new sap.m.Column({
+			     header: new sap.m.Label(col.label)
+			   }));
+
+			   var oControl = new sap.m.Text(col.textData);
+			   colItems.addCell(oControl);
+ 
+			});
+
+			return new sap.m.Page({
+				title: "Table Page",
+				content: [oTable]
+			});
+
+          }
+
+        });*/
+
+             
+		/*appUI.addPage(sap.ui.view({
+             		 	  type: sap.ui.core.mvc.ViewType.JS,
+              			  viewName: "sap.m.sample.TableSample.NewView"
+            		}));*/
+
+
+
+		
+		</script>
+		
+		<div class="sapUiBody" id="contentSapUI" >
+          <div id="tableUI">
+		  </div>
+		</div>
+    </body>
+</html>
