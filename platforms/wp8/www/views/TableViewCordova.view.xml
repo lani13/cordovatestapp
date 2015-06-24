@@ -1,0 +1,73 @@
+<mvc:View
+	controllerName="sap.m.views.TableController"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	  
+	<ScrollContainer
+		height="100%"
+		width="100%"
+		horizontal="false"
+		vertical="true"
+		focusable="true">
+	  
+	  <Table id="idTable"
+    inset="false"
+    items="{/data}"
+    noDataText="Brak danych">
+    <headerToolbar>
+      <Toolbar>
+        <Title text="Partners" level="H2"/>
+      </Toolbar>
+    </headerToolbar>
+    <columns>
+      <Column
+        minScreenWidth="Phone"
+		hAlign="Center">
+        <Text text="C1" />
+      </Column>
+      <Column
+        minScreenWidth="Desktop"
+        demandPopin="true"
+		hAlign="Center">
+        <Text text="C2" />
+      </Column>
+      <Column
+        minScreenWidth="Desktop"
+        demandPopin="true"
+        hAlign="Center">
+        <Text text="C3" />
+      </Column>
+      <Column
+        minScreenWidth="Desktop"
+        demandPopin="true"
+        hAlign="Center">
+        <Text text="C4" />
+      </Column>
+      <Column
+	minScreenWidth="Tablet"
+	demandPopin="true"
+        hAlign="Center">
+        <Text text="C5" />
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text
+            text="{c1}"/>
+          <Text
+            text="{c2}" />
+          <Text
+            text="{c3}" />
+          <Text
+            text="{c4}" />
+          <Text
+            text="{c5}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</ScrollContainer>
+</mvc:View>

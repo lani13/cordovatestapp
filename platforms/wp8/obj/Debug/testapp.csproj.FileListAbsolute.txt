@@ -1,0 +1,14 @@
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\ApplicationIcon.png
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\Background.png
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\com.company.TestApp.dll
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\com.company.TestApp.pdb
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\AppManifest.xaml
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\Properties\WMAppManifest.xml
+D:\CordovaProjekty\testapp\platforms\wp8\Bin\Debug\CordovaAppProj_Debug_AnyCPU.xap
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\App.g.cs
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\cordovalib\CordovaView.g.cs
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\MainPage.g.cs
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\com.company.TestApp.g.resources
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\com.company.TestApp.dll
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\com.company.TestApp.pdb
+D:\CordovaProjekty\testapp\platforms\wp8\obj\Debug\XapCacheFile.xml

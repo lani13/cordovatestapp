@@ -1,29 +1,66 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-       
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script id="sap-ui-bootstrap"  
-      		type="text/javascript"  
-      		src="sap.ui.core.js"  
-      		data-sap-ui-theme="sap_bluecrystal"  
-      		data-sap-ui-libs="sap.m">  
-		</script>
-		
-		<div class="sapUiBody" id="contentSapUI" >
-          <div id="tableUI">
-          	SAP UI 5
-          </div>
-         </div>
-    </body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!--  <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
+    <title>Hello World</title>
+</head>
+<body>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script id="sap-ui-bootstrap"
+            type="text/javascript"
+            src="resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_bluecrystal"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-resourceroots='{"sap.m.views": "./views"}'
+            data-sap-ui-preload="">
+    </script>
+
+    <script>
+        var appUI = new sap.m.App({});
+
+        jQuery.sap.declare("sap.m.views.TableController");
+
+        sap.ui.controller("sap.m.views.TableController", {
+            onInit: function () {
+
+
+                var model = new sap.ui.model.json.JSONModel();
+
+                var urlData = 'http://acuarius.ontc.pl:3000/api/get?method=redis/fill_table&set=BP008/ddd/sss/DoxSets/byDoxType/doxtype_PARTNER&uid=';
+
+                $.ajax({
+                    url: urlData,
+                    dataType: 'json',
+                    async: true,
+                }).done(function (response) {
+                    model.setData(response);
+                    sap.ui.getCore().setModel(model);
+                }).fail(function (x, y) {
+                    //model.setData(jsonData);
+                    //sap.ui.getCore().setModel(model);
+                });
+            }
+        });
+
+        appUI.addPage(sap.ui.view({
+            type: sap.ui.core.mvc.ViewType.XML,
+            viewName: "sap.m.views.TableViewCordova"
+        }));
+
+        appUI.placeAt("tableUI");
+
+    </script>
+
+    <div class="sapUiBody" id="contentSapUI">
+        <div id="tableUI">
+        </div>
+    </div>
+</body>
 </html>
+
